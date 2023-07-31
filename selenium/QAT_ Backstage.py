@@ -34,16 +34,7 @@ password = driver.find_element(By.ID, ":r1:")
 password.send_keys("qa156156")
 loginbtn = driver.find_element(By.CSS_SELECTOR,"[type='button']")
 loginbtn.send_keys(Keys.ENTER)
-
-# -------------------------------------------------------------------完成以上動作後停止X秒
-time.sleep(3)
-
-# -------------------------------------------------------------------出錯時抓consolelog並寫入csv檔案
-console_logs = driver.get_log("browser")
-
-if  console_logs != "":
-    with open(f"log{timestamp}.csv", mode="w", newline="") as log:
-        csv.writer(log).writerow(console_logs)
+time.sleep(1)
 
 # -------------------------------------------------------------------抓到活動管理按鍵 並點擊
 ActivityManagement = driver.find_element(By.XPATH, "//span[contains(text(), '活動管理')]")
@@ -54,6 +45,34 @@ time.sleep(2)
 ActivitySettings = driver.find_element(By.XPATH, "//span[contains(text(), '活動設置')]")
 ActivitySettings.click()
 time.sleep(2)
+
+# -------------------------------------------------------------------抓到新增按鍵 並點擊
+addActivity = driver.find_element(By.XPATH, "//button[contains(text(), '新增')]")
+addActivity.click()
+print(addActivity.text)
+time.sleep(2)
+
+# -------------------------------------------------------------------抓到並填寫活動名稱欄位
+activityName = driver.find_element(By.ID, ":r2a:")
+activityName.send_keys("qaTooltest")
+time.sleep(2)
+
+# -------------------------------------------------------------------抓到並填寫活動類型欄位
+activityName = driver.find_element(By.ID, ":r2b:")
+activityName.send_keys("大亨任務")
+time.sleep(0.5)
+
+# -------------------------------------------------------------------抓到並填寫活動類型欄位
+activityStartTime = driver.find_element(By.XPATH, "//span[contains(text(), '開始時間')]")
+activityStartTime.send_keys(timestamp)
+time.sleep(0.5)
+
+# -------------------------------------------------------------------出錯時抓consolelog並寫入csv檔案
+# console_logs = driver.get_log("browser")
+
+# if  console_logs != "":
+#     with open(f"log{timestamp}.csv", mode="w", newline="") as log:
+#         csv.writer(log).writerow(console_logs)
 
 # -------------------------------------------------------------------截圖
 driver.save_screenshot("123.png")
