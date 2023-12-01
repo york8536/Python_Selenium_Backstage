@@ -5,7 +5,8 @@ from selenium.webdriver.common.by import By
 
 # 抓Chrome Driver檔案路徑
 options = Options()
-options.executable_path = "/Users/york8536/Desktop/python/chromedriver"
+# options.executable_path = "/Users/york8536/Desktop/python/chromedriver"
+options.executable_path = "/usr/local/bin/chromedriver"
 
 # 建立Driver 物件實體，用程式操作 瀏覽器 運作
 driver = webdriver.Chrome(options=options)
