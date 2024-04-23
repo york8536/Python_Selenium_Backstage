@@ -19,7 +19,8 @@ options.add_argument("--auto-open-devtools-for-tabs")  # 開啟F12
 
 # -------------------------------------------------------------------建立Driver 物件實體，用程式操作瀏覽器
 driver = webdriver.Chrome(options=options)
-
+# 設定隱式等待時間為10秒
+driver.implicitly_wait(10)
 # -------------------------------------------------------------------獲取當前時間
 nowtime = datetime.datetime.now()
 
